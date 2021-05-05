@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101395324381",
+    "project_id": "simple-counter-f5859",
+    "storage_bucket": "simple-counter-f5859.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101395324381:android:5b78a7308a93f7e05cea34",
+        "android_client_info": {
+          "package_name": "xyz.wardsoft.simple_counter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101395324381-1jcefv1jmhm3cdhj0t1ph8e3iavrdpf9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfpnEdXH_002zHYys3t3K0zDLaLu7rbqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101395324381-1jcefv1jmhm3cdhj0t1ph8e3iavrdpf9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

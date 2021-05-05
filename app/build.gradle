@@ -1,6 +1,25 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
+
+//load res
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
+
+//read file
+def sdkDir = properties.getProperty('key.file')
+
+//read column
+def key_file = file(sdkDir)
+def key_storePassword = properties.getProperty('storePassword')
+def key_keyAlias = properties.getProperty('keyAlias')
+def key_keyPassword = properties.getProperty('keyPassword')
+
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
 
 android {
     compileSdkVersion 30
@@ -10,16 +29,33 @@ android {
         applicationId "xyz.wardsoft.simple_counter"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        //versionCode 1
+        //versionName "1.0"
+        versionCode versionMajor * 10000 + versionMinor * 100 + versionPatch
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}"//1.0.1
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile key_file
+            storePassword key_storePassword
+            keyAlias key_keyAlias
+            keyPassword key_keyPassword
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            zipAlignEnabled true
+            debuggable false
+            minifyEnabled true //if Obfuscate
+            shrinkResources true //delete useless res
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (key_file.exists()){
+                signingConfig signingConfigs.release
+            }
         }
     }
     compileOptions {
@@ -36,4 +72,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation 'com.google.firebase:firebase-analytics'
 }
