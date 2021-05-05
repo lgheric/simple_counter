@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Simple Counter</string>
+    <string name="dialog_title">Sure?</string>
+    <string name="yes">Sure</string>
+    <string name="cancel">Cancel</string>
+</resources>
