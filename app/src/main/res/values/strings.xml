@@ -3,4 +3,9 @@
     <string name="dialog_title">Sure?</string>
     <string name="yes">Sure</string>
     <string name="cancel">Cancel</string>
+    <string name="action_settings">Setting</string>
+    <string name="action_share">Share</string>
+    <string name="action_rate">Rate Us</string>
+    <string name="action_contact">Contact Us</string>
+    <string name="action_privacy">Privacy Policy</string>
 </resources>
