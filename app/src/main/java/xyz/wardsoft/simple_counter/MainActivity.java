@@ -156,8 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 shareApp();
                 return true;
             case R.id.action_rate:
-                //TODO
-                Toast.makeText(this,"Going to play now .",Toast.LENGTH_LONG).show();
+                rateMe();
                 return true;
             case R.id.action_privacy:
                 String url = "https://lgheric.github.io/privacy/";
@@ -195,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void shareApp(){
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "Share the simple counter - http://play.google.com");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Download Simple Counter:https://play.google.com/store/apps/details?id="+this.getPackageName());
         sendIntent.setType("text/plain");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -206,5 +205,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Uri uri = Uri.parse("mailto:robert2021south@gmail.com");
         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
         startActivity(intent);
+    }
+
+    private void rateMe() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=" + this.getPackageName())));
+        } catch (android.content.ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+        }
     }
 }
